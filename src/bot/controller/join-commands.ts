@@ -1,4 +1,4 @@
-import { VoiceState } from "discord.js";
+import { VoiceChannel, VoiceState } from "discord.js";
 import { join } from "../commands/join";
 import { play } from "../commands/play";
 
@@ -11,12 +11,12 @@ export const handleJoinCommands = (
   if (newState.channelId === null) {
     if (oldState?.member?.id == "1303130781580918954") return;
     console.log("user left channel", oldState.channelId);
-    const connection = join(oldState.channel);
+    const connection = join(oldState.channel as VoiceChannel);
     play("sad-meow.mp3", connection, false);
   } else if (oldState.channelId === null) {
     if (newState?.member?.id == "1303130781580918954") return;
     console.log("user joined channel", newState.channelId);
-    const connection = join(newState.channel);
+    const connection = join(newState.channel as VoiceChannel);
     play("meow.mp3", connection, false);
   } else {
     console.log("user moved channels", oldState.channelId, newState.channelId);

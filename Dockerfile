@@ -13,6 +13,9 @@ RUN npm install
 # Copia el resto del código (excluido lo que está en .dockerignore)
 COPY . .
 
+# Install SQLite
+RUN apk add --no-cache sqlite
+
 # Compila el código TypeScript
 RUN npm run build
 

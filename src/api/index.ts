@@ -30,7 +30,7 @@ export const start = () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  app.listen(8080, () => console.log("Example app listening on port 8080!"));
+  app.listen(8081, () => console.log("Example app listening on port 8081"));
 
   app.get("/test", (_, res) => {
     res.send("test ok");

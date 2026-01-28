@@ -18,6 +18,6 @@ export const createTTS = async (
     console.log("Existing file deleted: assets/tts-output.mp3");
   }
 
-  fs.writeFileSync(ttsFilePath, response.audioContent, "binary");
+  fs.writeFileSync(ttsFilePath, response.audioContent as any, "binary");
   console.log("Audio content written to file: tts-output.mp3");
 };

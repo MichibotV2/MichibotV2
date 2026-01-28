@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "discord.js";
 import { ping } from "../commands/ping";
 import { textToSpeechCommand } from "../commands/text-to-speech";
 import { joinChannel } from "../commands/join";
+import { createMichi } from "../commands/createMichi";
 export const textCommands = [
   {
     name: "ping",
@@ -51,6 +52,13 @@ export const textCommands = [
           ),
       ),
     callback: textToSpeechCommand,
+  },
+  {
+    name: "create",
+    builder: new SlashCommandBuilder()
+      .setName("create")
+      .setDescription("Create your Michi"),
+    callback: createMichi,
   },
 ];
 

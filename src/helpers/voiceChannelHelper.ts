@@ -1,9 +1,9 @@
-import { ChatInputCommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction, GuildMember } from "discord.js";
 
 export const userIsInVoiceChannel = async (
   interaction: ChatInputCommandInteraction,
 ) => {
-  return Boolean(interaction?.member?.voice.channel);
+  return Boolean((interaction?.member as GuildMember)?.voice.channel);
 };
 
 export const replyNotInChannel = async (
@@ -23,19 +23,27 @@ export const reply = async (
   message: string,
   ephemeral: boolean = false,
 ) => {
-  await interaction.reply({
-    content: message,
-    ephemeral: ephemeral,
-  });
+  try {
+    await interaction.reply({
+      content: message,
+      ephemeral: ephemeral,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const editReply = async (
-  interaction: ChatInputCommandInteraction,
+  interaction: any,
   message: string,
   ephemeral: boolean = false,
 ) => {
-  await interaction.reply({
-    content: message,
-    ephemeral: ephemeral,
-  });
+  try {
+    await interaction.editReply({
+      content: message,
+      ephemeral: ephemeral,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
